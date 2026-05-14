@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Variety Hive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:Poppins;background:#0b0b0b;color:white}
+
+nav{
+display:flex;justify-content:space-between;
+padding:15px;background:#000;position:sticky;top:0
+}
+
+.hero{
+height:60vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background-size:cover;
+background-position:center;
+transition:0.5s;
+}
+
+.products{
+padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#141414;
+padding:10px;
+border-radius:10px;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+button{
+padding:8px;
+border:none;
+margin:3px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.add{background:#d4af37}
+.view{background:#222;color:white}
+.del{background:red;color:white}
+
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+align-items:center;
+justify-content:center;
+}
+
+.box{
+background:#111;
+padding:20px;
+border-radius:10px;
+width:300px;
+}
+
+</style>
+</head>
+
+<body>
+<!-- CART -->
+
+<div id="cartModal"
+style="
+display:none;
+position:fixed;
+top:0;
+right:0;
+width:320px;
+height:100%;
+background:#111;
+color:white;
+padding:20px;
+z-index:9999;
+overflow:auto;
+box-shadow:-5px 0 20px rgba(0,0,0,0.5);
+">
+
+<div style="display:flex;justify-content:space-between;align-items:center">
+
+<h2>Cart</h2>
+
+<button onclick="closeCart()"
+style="
+background:red;
+color:white;
+border:none;
+padding:5px 10px;
+cursor:pointer;
+border-radius:5px;
+">
+X
+</button>
+
+</div>
+
+<div id="cartItems"></div>
+
+<h3 id="cartTotal">Total: Rs 0</h3>
+
+</div>
+<nav>
+<div>Variety Hive</div>
+<button onclick="openCart()">Cart (<span id="count">0</span>)</button>
+</nav>
+
+<div class="hero" id="hero">
+<h1>Luxury Watches</h1>
+</div>
+
+<div class="products" id="products"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="box">
+<img id="mimg" style="width:100%;height:200px;object-fit:cover">
+<h3 id="mname"></h3>
+<p id="mprice"></p>
+
+<button onclick="addModal()">Add To Cart</button>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
